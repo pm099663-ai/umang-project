@@ -1,139 +1,19 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f7f9fe">
-  <title>LoanPredict AI | Loan Estimate</title>
-  <meta name="description" content="Explore an educational personal loan repayment estimate with LoanPredict AI.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/style.css">
-</head>
-<body>
-  <header class="site-header">
-    <nav class="nav-wrap" aria-label="Main navigation">
-      <a class="brand" href="/" aria-label="LoanPredict AI home"><span class="brand-mark">L</span><span>LoanPredict <b>AI</b></span></a>
-      <div class="nav-links"><a href="#calculator">Calculator</a><a href="#how-it-works">How it works</a></div>
-      <span class="demo-pill"><span></span> Educational demo</span>
-    </nav>
-  </header>
-
-  <main>
-    <section class="intro" id="home">
-      <div class="intro-copy">
-        <p class="eyebrow"><span class="sparkle">✦</span> PLAN WITH CLARITY</p>
-        <h1>A clearer view of<br><em>your loan numbers.</em></h1>
-        <p class="intro-text">Adjust a few details to see a sample monthly payment and a simple affordability estimate. It takes less than a minute.</p>
-        <div class="intro-notes"><span><i>✓</i> No credit check</span><span><i>✓</i> No personal details</span></div>
-      </div>
-      <div class="intro-art" aria-hidden="true">
-        <div class="art-glow"></div><div class="art-card">
-          <span class="art-label">MONTHLY PAYMENT</span><strong>₹<span id="heroEmi">6,656</span></strong>
-          <div class="art-line"><span></span></div><div class="art-foot"><span>Flexible estimates</span><span class="art-check">✓</span></div>
-        </div>
-        <div class="art-dot dot-one"></div><div class="art-dot dot-two"></div>
-      </div>
-    </section>
-
-    <section class="calculator-section" id="calculator">
-      <div class="section-heading">
-        <div><p class="eyebrow">YOUR ESTIMATE</p><h2>Personal loan calculator</h2></div>
-        <p>Try different numbers. Your estimate updates as you go.</p>
-      </div>
-      <div class="calculator-card">
-        <div class="stepper" aria-label="Calculator steps">
-          <div class="step active" data-step-indicator="1"><span>1</span><div><b>Loan details</b><small>Amount & term</small></div></div>
-          <div class="step-line"></div>
-          <div class="step" data-step-indicator="2"><span>2</span><div><b>Income</b><small>Monthly budget</small></div></div>
-          <div class="step-line"></div>
-          <div class="step" data-step-indicator="3"><span>3</span><div><b>Estimate</b><small>Example results</small></div></div>
-        </div>
-
-        <div class="calculator-body">
-          <div class="form-area">
-            <form id="estimateForm" novalidate>
-              <section class="step-panel" data-panel="1">
-                <div class="panel-heading"><span class="panel-kicker">STEP 1 OF 3</span><h3>What are you planning for?</h3><p>Set a sample loan amount and repayment period.</p></div>
-                <div class="slider-grid">
-                  <div class="slider-control">
-                    <div class="slider-label"><label for="desiredLoan">Loan amount</label><output id="desiredLoanValue" for="desiredLoan"></output></div>
-                    <input id="desiredLoan" type="range" min="50000" max="5000000" step="50000" value="500000">
-                    <div class="range-ends"><span>₹50,000</span><span>₹50 lakh</span></div>
-                  </div>
-                  <div class="slider-control">
-                    <div class="slider-label"><label for="annualRate">Example annual interest</label><output id="annualRateValue" for="annualRate"></output></div>
-                    <input id="annualRate" type="range" min="8" max="30" step="0.25" value="12">
-                    <div class="range-ends"><span>8%</span><span>30%</span></div>
-                  </div>
-                  <div class="slider-control">
-                    <div class="slider-label"><label for="tenureMonths">Repayment period</label><output id="tenureValue" for="tenureMonths"></output></div>
-                    <input id="tenureMonths" type="range" min="12" max="120" step="12" value="36">
-                    <div class="range-ends"><span>1 year</span><span>10 years</span></div>
-                  </div>
-                </div>
-                <div class="form-actions"><span class="privacy-note"><span>🔒</span> Your values are used for this estimate only.</span><button class="primary-button" type="button" data-next="2">Continue <span>→</span></button></div>
-              </section>
-
-              <section class="step-panel hidden" data-panel="2">
-                <div class="panel-heading"><span class="panel-kicker">STEP 2 OF 3</span><h3>Check it against your budget</h3><p>Use approximate numbers. Nothing is saved or sent to a lender.</p></div>
-                <div class="slider-grid">
-                  <div class="slider-control">
-                    <div class="slider-label"><label for="monthlyIncome">Monthly income</label><output id="incomeValue" for="monthlyIncome"></output></div>
-                    <input id="monthlyIncome" type="range" min="20000" max="1000000" step="5000" value="60000">
-                    <div class="range-ends"><span>₹20,000</span><span>₹10 lakh</span></div>
-                  </div>
-                  <div class="slider-control">
-                    <div class="slider-label"><label for="existingEmi">Existing monthly EMIs</label><output id="existingEmiValue" for="existingEmi"></output></div>
-                    <input id="existingEmi" type="range" min="0" max="200000" step="1000" value="5000">
-                    <div class="range-ends"><span>₹0</span><span>₹2 lakh</span></div>
-                  </div>
-                </div>
-                <div class="select-control">
-                  <label for="workType">Work profile <span class="optional">optional</span></label>
-                  <select id="workType"><option value="salaried">Salaried</option><option value="self-employed">Self-employed</option><option value="other">Other / prefer not to say</option></select>
-                </div>
-                <div class="form-actions"><button class="text-button" type="button" data-back="1">← Back</button><button id="calculateButton" class="primary-button" type="submit">See my estimate <span>→</span></button></div>
-              </section>
-            </form>
-
-            <section class="step-panel hidden" data-panel="3" aria-live="polite">
-              <div class="panel-heading"><span class="panel-kicker">STEP 3 OF 3</span><h3>Your sample estimate</h3><p>These figures are illustrative and do not predict a lender’s decision.</p></div>
-              <div id="resultContent"></div>
-              <div class="form-actions result-actions"><button class="text-button" type="button" data-back="2">← Edit details</button><button class="outline-button" type="button" id="startOver">Start over</button></div>
-            </section>
-          </div>
-
-          <aside class="summary-area" aria-label="Live estimate summary">
-            <div class="summary-top"><span class="summary-icon">₹</span><span class="summary-caption">LIVE PAYMENT PREVIEW</span><span class="live-dot"></span></div>
-            <p class="summary-label">Estimated monthly payment</p>
-            <div class="summary-amount">₹<span id="summaryEmi">16,607</span><small> / month</small></div>
-            <div class="summary-divider"></div>
-            <div class="summary-row"><span>Loan amount</span><b id="summaryLoan">₹5,00,000</b></div>
-            <div class="summary-row"><span>Repayment period</span><b id="summaryTenure">3 years</b></div>
-            <div class="summary-row"><span>Example interest</span><b id="summaryRate">12% p.a.</b></div>
-            <div class="summary-tip"><span class="tip-icon">✦</span><p>This is a calculator estimate. A lender may use different rates and checks.</p></div>
-            <div class="summary-foot"><span class="mini-bars"><i></i><i></i><i></i><i></i></span><span>Numbers update as you adjust the sliders</span></div>
-          </aside>
-        </div>
-      </div>
-    </section>
-
-    <section class="how-section" id="how-it-works">
-      <div class="section-heading centered"><div><p class="eyebrow">SIMPLE BY DESIGN</p><h2>Three steps to a clearer estimate</h2></div></div>
-      <div class="how-grid">
-        <article class="how-card"><span class="how-num">01</span><div class="how-icon">⌁</div><h3>Choose your loan details</h3><p>Adjust the amount, example rate and repayment period.</p></article>
-        <article class="how-card"><span class="how-num">02</span><div class="how-icon">₹</div><h3>Add budget numbers</h3><p>Compare the estimate with income and existing monthly EMIs.</p></article>
-        <article class="how-card"><span class="how-num">03</span><div class="how-icon">↗</div><h3>Review sample scenarios</h3><p>See a simple affordability estimate and illustrative payments.</p></article>
-      </div>
-    </section>
-
-    <section class="disclaimer-section">
-      <div class="disclaimer-card"><span class="disclaimer-mark">i</span><p><b>Educational demo only.</b> This tool uses a simple affordability estimate, not a trained credit model. It is not a loan offer, financial advice, or a guarantee of approval. Do not enter real financial or identity details.</p></div>
-    </section>
-  </main>
-  <footer><a class="brand footer-brand" href="/"><span class="brand-mark">L</span><span>LoanPredict <b>AI</b></span></a><p>Plan with clarity. Decide independently.</p><small>© 2026 LoanPredict AI · Educational demo</small></footer>
-  <script src="/script.js" defer></script>
-</body>
-</html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LoanPredict AI | Approval Prediction</title><meta name="description" content="Educational loan approval prediction demo"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="/style.css"></head><body>
+<header><nav class="nav"><a class="brand" href="/"><span class="mark">L</span>LoanPredict <b>AI</b></a><span class="badge"><i></i> Prediction demo</span></nav></header>
+<main><section class="intro"><p class="eyebrow">EDUCATIONAL PROJECT</p><h1>Loan approval<br><span>prediction</span></h1><p>Enter a few details to predict whether the demo rules mark a loan as <b>Approved</b> or <b>Rejected</b>.</p></section>
+<section class="card"><div class="form-col"><div class="title-row"><span class="icon">↗</span><div><h2>Applicant details</h2><p>Use sample values to try a prediction.</p></div></div>
+<form id="predictionForm"><div class="grid">
+<label>Applicant monthly income<div class="input"><span>₹</span><input name="monthlyIncome" type="number" min="1" max="100000000" step="1000" placeholder="e.g. 40000" required></div></label>
+<label>Co-applicant monthly income<div class="input"><span>₹</span><input name="coIncome" type="number" min="0" max="100000000" step="1000" value="0" required></div></label>
+<label>Existing monthly EMI<div class="input"><span>₹</span><input name="existingEmi" type="number" min="0" max="100000000" step="500" value="0" required></div></label>
+<label>Requested loan amount<div class="input"><span>₹</span><input name="loanAmount" type="number" min="1" max="1000000000" step="10000" placeholder="e.g. 500000" required></div></label>
+<label>Annual interest rate<div class="input suffix"><input name="interestRate" type="number" min="1" max="40" step="0.1" value="12" required><span>%</span></div></label>
+<label>Loan duration<div class="input suffix"><input name="duration" type="number" min="1" max="360" placeholder="e.g. 36" required><span>months</span></div></label>
+<label class="full">Credit history<select name="creditHistory" required><option value="">Select credit history</option><option value="good">Good</option><option value="poor">Poor</option></select></label>
+</div><button id="predictButton" class="primary" type="submit">Predict approval <span>→</span></button><p class="privacy">🔒 No name, phone, PAN or bank details are collected. Values are not saved.</p></form></div>
+<aside class="result" aria-live="polite"><div class="result-head"><span class="icon">✓</span><span class="eyebrow">PREDICTION RESULT</span></div>
+<div id="emptyState" class="empty"><div class="question">?</div><h3>Your result will appear here</h3><p>Fill in the fields and select <b>Predict approval</b>.</p></div>
+<div id="resultContent" class="hidden"><p class="small-label">The demo predicts</p><h2 id="verdict"></h2><p id="verdictMessage" class="message"></p><div class="details"><div><span>Estimated monthly EMI</span><b id="estimatedEmi"></b></div><div><span>Total EMI / income</span><b id="debtRatio"></b></div></div><ul id="reasons"></ul><button id="resetButton" class="outline" type="button">Try another prediction</button></div>
+<p class="disclaimer">Demo rules only. Not a real bank decision, loan offer or guarantee.</p></aside></section>
+<section class="rule"><b>How the demo predicts:</b> it checks credit history and whether the estimated new EMI plus existing EMI is within 40% of household monthly income. This is a simple classroom rule, not a trained ML model.</section></main>
+<footer><a class="brand" href="/"><span class="mark">L</span>LoanPredict <b>AI</b></a><span>Educational prediction demo</span><small>© 2026</small></footer><script src="/script.js" defer></script></body></html>

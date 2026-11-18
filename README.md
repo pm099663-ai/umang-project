@@ -1,17 +1,13 @@
 # LoanPredict AI
 
-A step-by-step educational loan calculator demo.
+Simple educational loan approval/rejection predictor.
 
-## Live demo
-https://umang-project.vercel.app/
+Live demo: https://umang-project.vercel.app/
 
 ## Run locally
-Use Node.js 18 or newer, run `npm start`, then open http://127.0.0.1:3000.
+Node.js 18+: run `npm start`, then open http://127.0.0.1:3000.
 
-## How it works
-The calculator takes a requested amount, example interest rate, term, monthly income, and existing monthly EMIs. The backend applies a simple 35% monthly-income budgeting heuristic and returns illustrative repayment scenarios. It does not save submitted values, use a trained model, check credit, or contact lenders.
+## Prediction rule
+The demo estimates a monthly EMI, adds existing EMI, and compares the total with 40% of combined household monthly income. It predicts Approved only when credit history is Good and the EMI ratio is within that demo limit. It does not store values or contact a lender.
 
-Vercel serves static assets from `public/` and the Node.js API at `POST /api/predict`. The Render Blueprint is also included for local project deployment.
-
-## Important
-This is not a credit decision, financial advice, lender offer, or guarantee of approval. Do not enter real financial or identity details. A real lender will use different criteria and make an independent assessment.
+This is a rule-based classroom demo, not a trained machine-learning model, real bank decision, loan offer, or guarantee. Use a suitable labeled dataset to train and validate a real model.
