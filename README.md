@@ -1,5 +1,7 @@
 # LoanPredict AI
 
+[Deploy this app to Render](https://render.com/deploy?repo=https://github.com/pm099663-ai/umang-project)
+
 Educational loan eligibility demo with a Node.js backend.
 
 ## Run locally
