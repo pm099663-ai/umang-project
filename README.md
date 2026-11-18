@@ -9,6 +9,9 @@ Use Node.js 18 or newer, then run `npm start` in this folder and open http://127
 
 The API validates submissions at `POST /api/predict`. `GET /api/health` reports server status. Demo submissions are written to `data/applications.jsonl`; that file is excluded from Git and is never served over HTTP.
 
+## Deploy on Vercel
+Import this repository from the Vercel dashboard. The included `vercel.json` serves the frontend and routes `POST /api/predict` to a serverless Node function. That hosted function returns a demo estimate and does not save submitted form details.
+
 ## Deploy on Render
 This repository includes a Render Blueprint in `render.yaml`. In Render, create a new Blueprint and select this repository. The included service uses the free instance type. Free service storage is temporary: saved applications can be lost when the instance restarts or is redeployed. Use an external database or a paid persistent disk before relying on stored submissions.
 
