@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "description": "Educational loan prediction demo backend",
-  "scripts": { "start": "node server.js" },
-  "engines": { "node": ">=18" }
+  "scripts": {
+    "start": "node server.js",
+    "build": "node -e \"console.log('Static frontend ready')\""
+  },
+  "engines": {
+    "node": ">=18"
+  }
 }
