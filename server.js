@@ -68,6 +68,7 @@ async function handlePrediction(req, res) {
     result: likelyEligible ? 'likely_eligible' : 'needs_review'
   };
   try {
+    await fs.promises.mkdir(path.dirname(DATA_FILE), { recursive: true });
     await fs.promises.appendFile(DATA_FILE, JSON.stringify(application) + '\n', { encoding: 'utf8', flag: 'a' });
   } catch (error) {
     console.error('Could not save application:', error.message);
@@ -90,7 +91,10 @@ const server = http.createServer(async (req, res) => {
   if (req.method === 'GET' && url.pathname === '/api/health') return sendJson(res, 200, { status: 'ok' });
   if (req.method !== 'GET' && req.method !== 'HEAD') return sendJson(res, 405, { error: 'Method not allowed.' });
 
-  const relative = url.pathname === '/' ? 'index.html' : decodeURIComponent(url.pathname).replace(/^\/+/, '');
+  let relative;
+  try { relative = url.pathname === '/' ? 'index.html' : decodeURIComponent(url.pathname).replace(/^\/+/, ''); }
+  catch { return sendJson(res, 400, { error: 'Invalid path.' }); }
+  if (!['index.html', 'script.js', 'style.css'].includes(relative)) return sendJson(res, 404, { error: 'Not found.' });
   const file = path.resolve(ROOT, relative);
   if (!file.startsWith(ROOT + path.sep)) return sendJson(res, 403, { error: 'Forbidden.' });
   try {
